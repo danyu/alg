@@ -22,8 +22,8 @@ package danyu.leetcode;
 public class LrgstRectPassed {
 
 	public int doIt(int[] height){
-		int maxRect=0, start=0,end=0;
-	    int tempStart=0,tempEnd=0,tempMax=0,tempMin=0;    
+		int maxRect=0;
+	    int tempStart=0,tempEnd=0,tempMax=0;  
 	    
 	    //O(n)
 		for(int i=0;i<height.length;i++){
@@ -41,8 +41,7 @@ public class LrgstRectPassed {
 					break;//and ends
 				} else {// meet greater height
 					tempStart = m;
-					if (height[tempMax] < height[m])
-						tempMax = m;
+					if (height[tempMax] < height[m]) tempMax = m;
 				}
 			}
 			
@@ -51,7 +50,6 @@ public class LrgstRectPassed {
 			// O(n)
 			for (int m = i + 1; m < height.length; m++) {
 				if (height[m] < height[i]) {//meet smaller height
-					// min=hist[i];
 					tempEnd = m-1;
 					break;
 				}else	{
@@ -60,19 +58,18 @@ public class LrgstRectPassed {
 				}
 			}
 					
-			//new bigger rectangle is found, then update
-			int s=height[i]*(tempEnd-tempStart+1);
-			if(s>maxRect){		
-				maxRect=s;
-				start=tempStart;
-				end=tempEnd;
-			}
-			
-			//***Important improvement: check if it is a same-height area
-			// if i marks the maximum height, it means that it is a same-height area,
+			// new bigger rectangle is found, then update
+			int s = height[i] * (tempEnd - tempStart + 1);
+			if (s > maxRect)
+				maxRect = s;
+
+			// ***Important improvement: check if it is a same-height area
+			// if i marks the maximum height, it means that it is a same-height
+			// area,
 			// then jump to the end of the same-height are.
-			if(i==tempMax) i=tempEnd;			
-			
+			if (i == tempMax)
+				i = tempEnd;
+
 		}
 		
 		return maxRect;
