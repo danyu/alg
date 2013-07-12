@@ -3,10 +3,19 @@ package danyu.problem;
 import java.util.ArrayList;
 
 /**
- * @author danyu_you Find pairs with certain summation.
+ * @author danyu_you 
+ * To find pairs with certain summation.
+ * Example:
+ *   Find pairs with summation of 6 in following array:
+ *         0,1,2,3,4,5,5,6,7
+ *   The result would be: {0,6},{1,5},{1,5},{2,4}
  */
 public class Sum2 {
 
+	/**
+	 * @param a
+	 * @param sum
+	 */
 	public static void solve(int[] a, int sum) {
 
 		int[] sa = sort(a);
