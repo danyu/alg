@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Example:
  *   Find pairs with summation of 6 in following array:
  *         0,1,2,3,4,5,5,6,7
- *   The result would be: {0,6},{1,5},{1,5},{2,4}
+ *   The result would be: {0,6},{1,5},{1,5},{2,4} 
  */
 public class Sum2 {
 
