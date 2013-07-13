@@ -11,7 +11,9 @@ For example, given n = 2, return [0,1,3,2]. Its gray code sequence is:
 00 - 0
 01 - 1
 11 - 3
-10 - 2*/
+10 - 2
+
+*/
 
 //^_^ Passed
 public class GreyCode {
