@@ -19,19 +19,16 @@ public class ThreeSum {
 	 *            , has at least three elements
 	 * @param sum
 	 */
-	public static ArrayList<ArrayList<Integer>> solve(int[] num, int sum) {
+	public  ArrayList<ArrayList<Integer>> solve(int[] num, int sum) {
 
 		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
 
 		if (num.length < 3)
 			return null;
 
-		num = Sum2.sort(num);
-
+		sort(num);
 		int head = 0, mid = 0, tail = 0;
 		int curSum;
-		
-
 		while (head <= num.length - 3) {
 
 			mid = head + 1;
@@ -56,12 +53,7 @@ public class ThreeSum {
 						}
 					} else {
 						result.add(oneSolution);
-						
 					}
-					//System.out.print("{" + oneSolution.get(0) + ", " + oneSolution.get(1)
-					//		+ ", " + oneSolution.get(2) + "} ");
-
-					// look for other solution
 					mid++;
 
 				} else if (curSum > sum) {
@@ -86,18 +78,35 @@ public class ThreeSum {
 
 	}
 
+	//insertion sort
+	public void sort(int[] nums){
+		
+		int sorted=0,next=0,posForNext=0;
+		
+		for(sorted=0;sorted<nums.length-1;sorted++)
+		{
+			next=nums[sorted+1];
+			for(posForNext=sorted+1;posForNext>0;posForNext--){
+				if(next<nums[posForNext-1]) nums[posForNext]=nums[posForNext-1];
+				else break;
+			}
+			nums[posForNext]=next;
+		}
+		return;
+	}
+	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
         //try cases
-		ThreeSum.solve(new int[] { -1, -1, 0, 0, 0, 0, 0, 1, -1, -2, 3 }, 0);
-		ThreeSum.solve(new int[] { -1, -1,-1, 0, 0,0, 1,1, 2,4 }, 0);
+		new ThreeSum().solve(new int[] { -1, 0, 0, 1, -1, -2, 3 }, 0);
+		/*ThreeSum.solve(new int[] { -1, -1,-1, 0, 0,0, 1,1, 2,4 }, 0);
 		ThreeSum.solve(new int[] { -4, -2,-1, 0, 0,0, 1,1,1,1 }, 0);
 		ThreeSum.solve(new int[] { -1, 0, 1, 2, -1, -4 }, 0);
 		ThreeSum.solve(new int[] { 1,1,-2}, 0);
-		ThreeSum.solve(new int[] { -4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6}, 0);
+		ThreeSum.solve(new int[] { -4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6}, 0);*/
 		
 	}
 
