@@ -19,12 +19,14 @@ public class ThreeSum {
 	 *            , has at least three elements
 	 * @param sum
 	 */
-	public  ArrayList<ArrayList<Integer>> solve(int[] num, int sum) {
+	public ArrayList<ArrayList<Integer>> solve(int[] num, int sum) {
 
+		// if(num.length)
+		// int sum=0;
 		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
 
 		if (num.length < 3)
-			return null;
+			return result;
 
 		sort(num);
 		int head = 0, mid = 0, tail = 0;
@@ -42,7 +44,7 @@ public class ThreeSum {
 					oneSolution.add(num[head]);
 					oneSolution.add(num[mid]);
 					oneSolution.add(num[tail]);
-					
+
 					if (result.size() > 0) {
 						ArrayList<Integer> last = result.get(result.size() - 1);
 						if (last.get(0) != oneSolution.get(0)
@@ -65,49 +67,50 @@ public class ThreeSum {
 					while (num[mid] == num[mid - 1] && mid < tail)
 						mid++;
 				}
-
 			}
-			//avoid duplication
+			// avoid duplication
 			head++;
-			while (head>0 && num[head] == num[head - 1] && head < tail)
+			while (head > 0 && num[head] == num[head - 1] && head < tail)
 				head++;
 		}
 
-		//System.out.println("Done");
+		// System.out.println("Done");
 		return result;
 
 	}
 
-	//insertion sort
-	public void sort(int[] nums){
-		
-		int sorted=0,next=0,posForNext=0;
-		
-		for(sorted=0;sorted<nums.length-1;sorted++)
-		{
-			next=nums[sorted+1];
-			for(posForNext=sorted+1;posForNext>0;posForNext--){
-				if(next<nums[posForNext-1]) nums[posForNext]=nums[posForNext-1];
-				else break;
+	// insertion sort
+	public void sort(int[] nums) {
+
+		int sorted = 0, next = 0, posForNext = 0;
+		for (sorted = 0; sorted < nums.length - 1; sorted++) {
+			next = nums[sorted + 1];
+			for (posForNext = sorted + 1; posForNext > 0; posForNext--) {
+				if (next < nums[posForNext - 1])
+					nums[posForNext] = nums[posForNext - 1];
+				else
+					break;
 			}
-			nums[posForNext]=next;
+			nums[posForNext] = next;
 		}
 		return;
 	}
-	
+
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-        //try cases
+		// try cases
 		new ThreeSum().solve(new int[] { -1, 0, 0, 1, -1, -2, 3 }, 0);
-		/*ThreeSum.solve(new int[] { -1, -1,-1, 0, 0,0, 1,1, 2,4 }, 0);
-		ThreeSum.solve(new int[] { -4, -2,-1, 0, 0,0, 1,1,1,1 }, 0);
-		ThreeSum.solve(new int[] { -1, 0, 1, 2, -1, -4 }, 0);
-		ThreeSum.solve(new int[] { 1,1,-2}, 0);
-		ThreeSum.solve(new int[] { -4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6}, 0);*/
-		
+		/*
+		 * ThreeSum.solve(new int[] { -1, -1,-1, 0, 0,0, 1,1, 2,4 }, 0);
+		 * ThreeSum.solve(new int[] { -4, -2,-1, 0, 0,0, 1,1,1,1 }, 0);
+		 * ThreeSum.solve(new int[] { -1, 0, 1, 2, -1, -4 }, 0);
+		 * ThreeSum.solve(new int[] { 1,1,-2}, 0); ThreeSum.solve(new int[] {
+		 * -4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6}, 0);
+		 */
+
 	}
 
 }

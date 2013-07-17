@@ -6,13 +6,13 @@ import danyu.problem.Sum2;
 
 public class FourSum {
 
-	public static ArrayList<ArrayList<Integer>> solve(int[] num, int target) {
+	public ArrayList<ArrayList<Integer>> solve(int[] num, int target) {
 
 		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
-		if (num.length < 3)
+		if (num.length < 4)
 			return result;
 
-		num = Sum2.sort(num);
+		sort(num);
 
 		int head = 0, mid1, mid2, tail = num.length - 1, tempSum;
 
@@ -35,9 +35,7 @@ public class FourSum {
 
 						if (result.size() == 0) {
 							result.add(oneSolution);
-
-						} else {
-							// avoid duplication
+						} else {// avoid duplication
 							ArrayList<Integer> lastSolution = result.get(result
 									.size() - 1);
 							if (lastSolution.get(0) != num[head]
@@ -62,7 +60,6 @@ public class FourSum {
 						while (mid2 < tail && num[tail] == num[tail + 1])
 							tail--;
 					}
-
 				}
 				mid1++;
 				// avoid duplication
@@ -74,9 +71,26 @@ public class FourSum {
 			while (head > 0 && head < tail && num[head] == num[head - 1])
 				head++;
 		}
-		System.out.println(", Done");
+		//System.out.println(", Done");
 		return result;
 
+	}
+	
+	// insertion sort
+	public void sort(int[] nums) {
+
+		int sorted = 0, next = 0, posForNext = 0;
+		for (sorted = 0; sorted < nums.length - 1; sorted++) {
+			next = nums[sorted + 1];
+			for (posForNext = sorted + 1; posForNext > 0; posForNext--) {
+				if (next < nums[posForNext - 1])
+					nums[posForNext] = nums[posForNext - 1];
+				else
+					break;
+			}
+			nums[posForNext] = next;
+		}
+		return;
 	}
 
 	/**
@@ -84,8 +98,8 @@ public class FourSum {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		FourSum.solve(new int[] { 12, 2, 3, -2, -4, 6, -1, -1, -1, 4 }, 1);
-		FourSum.solve(new int[] { -4, -4, -3, -2, -1, 0, 1, 1, 2, 3, 4 }, 0);
+		new FourSum().solve(new int[] { 12, 2, 3, -2, -4, 6, -1, -1, -1, 4 }, 1);
+		new FourSum().solve(new int[] { -4, -4, -3, -2, -1, 0, 1, 1, 2, 3, 4 }, 0);
 
 	}
 
