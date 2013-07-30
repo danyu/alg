@@ -63,7 +63,6 @@ public class InterleaveString {
 		}
 		
 		return false;
-		
 	}
 	
 	public boolean generate(String s1, String s2, String s3){
